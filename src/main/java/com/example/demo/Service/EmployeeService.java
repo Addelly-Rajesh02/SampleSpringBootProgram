@@ -2,6 +2,7 @@ package com.example.demo.Service;
 
 import com.example.demo.Entity.EmployeeEntity;
 import jakarta.validation.Valid;
+import org.springframework.data.domain.Page;
 
 import java.util.List;
 
@@ -18,4 +19,6 @@ public interface EmployeeService {
     EmployeeEntity getEmployeeById(Long id);
 
     List<EmployeeEntity> all(String department, String jobTitle);
+
+    Page<EmployeeEntity> getProducts(int pageNo, int pageSize);
 }

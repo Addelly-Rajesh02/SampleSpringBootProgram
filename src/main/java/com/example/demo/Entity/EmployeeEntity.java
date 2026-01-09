@@ -15,7 +15,7 @@ public class EmployeeEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "Employee Id")
+    @Column(name = "StudentRollNumber")
     private Long id;
 
     @Column(name = "First Name")
@@ -33,7 +33,7 @@ public class EmployeeEntity {
     @Email(message = "Invalid email format")
     private String email;
 
-    @Column(name = "Department")
+    @Column(name = "Branch")
     @NotBlank(message = "Department is required")
     @Pattern(regexp = "^[A-Za-z]+(?: [A-Za-z]+)*$", message = "Department must contain only alphabets and single spaces")
     private String department;

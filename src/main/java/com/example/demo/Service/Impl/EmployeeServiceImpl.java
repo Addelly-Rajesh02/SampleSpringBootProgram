@@ -7,6 +7,9 @@ import com.example.demo.Exception.EntityNotFoundException;
 import com.example.demo.Repository.EmployeeRepository;
 import com.example.demo.Service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -86,6 +89,13 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Override
     public List<EmployeeEntity> all(String department, String jobTitle){
         return employeeRepository.findByDepartmentAndJobTitle(department,jobTitle);
+    }
+
+    @Override
+    public Page<EmployeeEntity> getProducts(int pageNo, int pageSize) {
+        // Page numbers are 0-based in Spring Data JPA
+        Pageable pageable = PageRequest.of(pageNo, pageSize);
+        return employeeRepository.findAll(pageable);
     }
 
 }
